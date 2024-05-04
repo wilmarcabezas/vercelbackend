@@ -1,10 +1,13 @@
 import express from 'express';
 import conectar from './database.js';
 import serviceClients from './serviceClients.js';
+import cors from 'cors';
 
 const app = express();
 //Middleware: json() permite que la app entienda .json
 app.use(express.json());
+app.use(cors());
+
 
 app.get('/',async(request, response)=>{
     const data = await serviceClients.getClients();
